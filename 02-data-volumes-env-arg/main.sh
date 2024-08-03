@@ -53,7 +53,7 @@ case "$1" in
         run_container_dev
         ;;
     *)
-        echo "Usage: $0 {build-image|build-image-dev|run-dev-container}"
+        echo "Usage: $0 {build-image|build-image-dev|run-container|run-container-dev}"
         exit 1
         ;;
 esac
