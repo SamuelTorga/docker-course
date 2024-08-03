@@ -1,0 +1,47 @@
+services:
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=max
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - data:/data/db
+  backend:
+    build: ./backend
+    # Another form to set the Dockerfile path
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile.dev
+    #   args:
+    #     some-arg: 1
+    ports:
+      - 80:80
+    # We can use env_file to load environment variables from a file
+    env_file:
+      - ./env/backend.env
+    volumes:
+      - logs:/app/logs
+      - /app/node_modules
+      - ./backend:/app # Mount the backend folder to the container. In docker compose we can use relative paths.
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+    # Same as passing -it to docker run command
+    stdin_open: true
+    tty: true
+
+# Docker compose auto creates a network for the services and we don't need to create it manually 
+# networks:
+#   goals-net:
+
+volumes:
+  # Named volumes are required to be defined at the root level of the Compose file
+  data:
+  logs:
