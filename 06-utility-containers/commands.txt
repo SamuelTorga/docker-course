@@ -1,0 +1,8 @@
+# Build image
+docker build -t node-util .
+
+# Run node-util container
+docker run -it -v ${pwd}:/app node-util npm init
+
+# Run node-util container with docker-compose and remove container after execution
+docker-compose run --rm npm init
