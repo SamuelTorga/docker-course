@@ -27,7 +27,7 @@ create_network() {
 }
 
 run_mongodb() {
-    docker run -d --name mongodb --network ${NETWORK_NAME} -e MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME} -e MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD} mongo
+    docker run -d --name mongodb --network ${NETWORK_NAME} -e MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME} -e MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD} -v data:/data/db mongo
 }
 
 stop_mongodb() {
