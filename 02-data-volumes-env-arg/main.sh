@@ -22,7 +22,7 @@ build_image_dev() {
 # Bind mount the current directory to /app in the container
 # In this case it's useful so that the changes made in the host are reflected in the container
 # We set the bind mount as read-only to avoid any accidental changes in the container
-# On Windows there is a problem with the automatic reload of the changes. You need to configure to run in WSL 2.
+# On Windows there is a problem with the automatic reload of the changes when using WSL.
 BIND_MOUNT=$(pwd):/app:ro
 # Create an anonymous volume for the node_modules directory. We set node_modules as an anonymous volume because we override it when we set the bind mount.
 ANONYMOUS_VOLUME_NODE_MODULES="/app/node_modules"
