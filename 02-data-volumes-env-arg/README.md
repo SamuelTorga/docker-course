@@ -1,4 +1,4 @@
-# Data Volumes, Environment Variables, Build Arguments
+# Exercise 02
 
 Exercise for:
 
