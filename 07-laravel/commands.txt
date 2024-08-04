@@ -1,0 +1,6 @@
+docker-compose run composer create-project --prefer-dist laravel/laravel=9  .
+
+
+docker-compose up -d --build server
+
+docker-compose run --rm artisan migrate
