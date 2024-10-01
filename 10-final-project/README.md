@@ -1,0 +1,1 @@
+As a final project, you can check [java-k8s](https://github.com/SamuelTorga/java-k8s), where I assembled all the knowledge from this course.
